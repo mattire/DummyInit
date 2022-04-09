@@ -1,5 +1,5 @@
 # DummyInit
-C# code. Just very simple copy paste method to create dummy simple initialization for jsonlike class structure, with properties.
+C# code. Just very simple copy paste method to create dummy simple initialization for jsonlike class structure, with properties. See Program.cs code file inside DummyInit folder. Uses reflection to discover props.
 
 Usage: Call Process method in console program like:
 
