@@ -114,7 +114,7 @@ namespace DummyInit
             {
                 var tc = Type.GetTypeCode(pi.PropertyType);
 
-                if (IsIntegerType(tc)) { rObj.AddInteger(pi); }
+                if (IsNumericType(tc)) { rObj.AddInteger(pi); }
 
                 else if (tc == TypeCode.String)
                 {
@@ -148,7 +148,7 @@ namespace DummyInit
 
             rObj.IncrementBlock();
 
-            if (IsIntegerType(tc)) {
+            if (IsNumericType(tc)) {
                 rObj.AddListInteger(pi);
             }
 
@@ -184,7 +184,7 @@ namespace DummyInit
             }
         }
 
-        public static bool IsIntegerType(TypeCode tc)
+        public static bool IsNumericType(TypeCode tc)
         {
             switch (tc)
             {
@@ -196,9 +196,9 @@ namespace DummyInit
                 case TypeCode.Int16:
                 case TypeCode.Int32:
                 case TypeCode.Int64:
-                //case TypeCode.Decimal:
-                //case TypeCode.Double:
-                //case TypeCode.Single:
+                case TypeCode.Decimal:
+                case TypeCode.Double:
+                case TypeCode.Single:
                     return true;
                 default:
                     return false;

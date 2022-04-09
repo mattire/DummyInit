@@ -21,6 +21,9 @@ namespace DummyInit.Classes2
     public class GlossEntry
     {
         public string ID { get; set; }
+        public int IntProp { get; set; }
+        public float FloatProp { get; set; }
+        public double DoubleProp { get; set; }
         public string SortAs { get; set; }
         public string GlossTerm { get; set; }
         public string Acronym { get; set; }
