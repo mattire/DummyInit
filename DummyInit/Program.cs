@@ -15,11 +15,24 @@ namespace DummyInit
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Hello World!");
+
+
             Process(typeof(Root2));
 
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+        }
+
+        public static void Process(Type type)
+        {
+            var rc = new RecursionObj();
+            rc.SB.Append($"var my{type.Name} = new {type.Name}() ");
+            ProcessProps(type, rc);
+            rc.SB.Append(";");
+            var str = rc.SB.ToString();
+            Console.WriteLine(str);
+            System.Diagnostics.Debug.WriteLine(str);
         }
 
         public class RecursionObj
@@ -92,17 +105,6 @@ namespace DummyInit
                 SB.Append(Tabs);
                 SB.AppendLine("\"blaa\",");
             }
-        }
-
-        public static void Process(Type type, StringBuilder sb1 = null)
-        {
-            var rc = new RecursionObj();
-            rc.SB.Append($"var my{type.Name} = new {type.Name}() ");
-            ProcessProps(type, rc);
-            rc.SB.Append(";");
-            var str = rc.SB.ToString();
-            Console.WriteLine(str);
-            System.Diagnostics.Debug.WriteLine(str);
         }
 
         public static void ProcessProps(Type type, RecursionObj rObj) {
@@ -182,7 +184,7 @@ namespace DummyInit
             }
         }
 
-         public static bool IsIntegerType(TypeCode tc)
+        public static bool IsIntegerType(TypeCode tc)
         {
             switch (tc)
             {
